@@ -149,9 +149,9 @@ export const cart = {
             text: (el, s) => {
               const sub = el.call('calculateSubtotal')
               const tax = sub * (s.root.taxRate || 0)
-              const delivery = s.root.delivery || 0
+              const shipping = s.root.shipping || 0
               const discount = s.root.discount || 0
-              return `$${(sub + tax + delivery - discount).toFixed(2)}`
+              return `$${(sub + tax + shipping - discount).toFixed(2)}`
             },
             fontWeight: '800', 
             fontSize: 'A2' 

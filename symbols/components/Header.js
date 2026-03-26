@@ -14,8 +14,8 @@ export const Header = {
     gap: 'Z',
     Icon: { name: 'logo' },
     Text: {
-      text: 'AC Store',
-      fontSize: 'A2',
+      text: 'The Shape Store',
+      fontSize: '24px',
       fontWeight: '700',
       color: 'black'
     }

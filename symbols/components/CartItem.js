@@ -13,6 +13,7 @@ export const CartItem = {
     flex: 1,
 
     ImageWrap: {
+      alignSelf: 'flex-start',
       background: 'gray1',
       round: 'Z',
       padding: 'Z',
@@ -24,6 +25,8 @@ export const CartItem = {
     },
 
     Details: {
+      alignSelf: 'flex-start',
+      paddingTop: '25px',
       flow: 'y',
       gap: 'X',
       color: 'text',
@@ -32,7 +35,11 @@ export const CartItem = {
         text: (el, s) => s.name,
         fontWeight: '600',
         fontSize: 'Z2',
-        maxWidth: 'H'
+      },
+      Description: {
+        text: (el, s) => s.description,
+        color: 'secondary',
+        fontSize: 'Y',
       },
       Color: {
         flow: 'x',
