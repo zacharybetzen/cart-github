@@ -26,7 +26,7 @@ export const CartItem = {
 
     Details: {
       alignSelf: 'flex-start',
-      paddingTop: '25px',
+      paddingTop: 'B',
       flow: 'y',
       gap: 'X',
       color: 'text',
@@ -63,10 +63,13 @@ export const CartItem = {
       Icon: { name: 'minus', boxSize: 'X2' },
       padding: 'X',
       onClick: (e, el, s) => {
-        s.update({ quantity: Math.max(1, s.quantity - 1) })
-        const items = s.root.cartItems
-        items[s.id].quantity = s.quantity
-        s.root.update({ cartItems: items })
+        const newQty = Math.max(1, s.quantity - 1)
+        s.update({ quantity: newQty })
+        s.root.update({
+          cartItems: s.root.cartItems.map(item => 
+            item.id === s.id ? { ...item, quantity: newQty } : item
+          )
+        })
       }
     },
     Text_Qty: {
@@ -81,10 +84,13 @@ export const CartItem = {
       Icon: { name: 'plus', boxSize: 'X2' },
       padding: 'X',
       onClick: (e, el, s) => {
-        s.update({ quantity: s.quantity + 1 })
-        const items = s.root.cartItems
-        items[s.id].quantity = s.quantity
-        s.root.update({ cartItems: items })
+        const newQty = s.quantity + 1
+        s.update({ quantity: newQty })
+        s.root.update({
+          cartItems: s.root.cartItems.map(item => 
+            item.id === s.id ? { ...item, quantity: newQty } : item
+          )
+        })
       }
     }
   },

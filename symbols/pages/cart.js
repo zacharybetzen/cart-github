@@ -32,8 +32,8 @@ export const cart = {
           padding: 'Z B',
           borderBottom: '1px solid gray2',
           Text_Product: { text: 'Product', fontSize: 'Y', color: 'secondary', flex: 1 },
-          Text_Qty: { text: 'Quantity', fontSize: 'Y', color: 'secondary', width: 'F', textAlign: 'center', paddingRight: '150px' },
-          Text_Price: { text: 'Price', fontSize: 'Y', color: 'secondary', width: 'F', textAlign: 'center', paddingRight: '60px' },
+          Text_Qty: { text: 'Quantity', fontSize: 'Y', color: 'secondary', width: 'F', textAlign: 'center', paddingRight: 'F' },
+          Text_Price: { text: 'Price', fontSize: 'Y', color: 'secondary', width: 'F', textAlign: 'center', paddingRight: 'D' },
           Empty: { width: 'A' }
         }
       },
@@ -89,11 +89,11 @@ export const cart = {
         H3: { text: 'Enter Coupon Code', fontSize: 'A', fontWeight: '700' },
         Input: {
           placeholder: 'Enter Your Coupon Code',
-          background: '#ff0000',
-          color: 'rgba(55,255,0,1)',
+          background: 'gray1',
+          color: 'text',
           padding: 'Z2 A',
           round: 'Z',
-          border: '1px solid #3700ff',
+          border: '1px solid gray2',
           fontSize: 'Z'
         },
         Button: {
