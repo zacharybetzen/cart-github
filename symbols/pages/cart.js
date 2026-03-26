@@ -128,11 +128,11 @@ export const cart = {
           Text_L: { text: 'Discount', color: 'secondary', fontSize: 'Z' },
           Text_V: { text: (el, s) => `$${(s.root.discount || 0).toFixed(2)}`, fontWeight: '600', fontSize: 'Z' }
         },
-        Row_Delivery: {
+        Row_Shipping: {
           flow: 'x',
           align: 'center space-between',
-          Text_L: { text: 'Delivery', color: 'secondary', fontSize: 'Z' },
-          Text_V: { text: (el, s) => `$${(s.root.delivery || 0).toFixed(2)}`, fontWeight: '600', fontSize: 'Z' }
+          Text_L: { text: 'Shipping', color: 'secondary', fontSize: 'Z' },
+          Text_V: { text: (el, s) => `$${(s.root.shipping || 0).toFixed(2)}`, fontWeight: '600', fontSize: 'Z' }
         },
         Row_Tax: {
           flow: 'x',
