@@ -52,6 +52,7 @@ export const cart = {
         gap: 'A',
         marginTop: 'B',
         Link_Back: {
+          extends: 'Link',
           text: 'Back',
           href: '/',
           color: 'black',
@@ -60,6 +61,7 @@ export const cart = {
           textDecoration: 'none'
         },
         Button_Cancel: {
+          extends: 'Button',
           text: 'Cancel Order',
           background: 'danger',
           color: 'white',
@@ -88,6 +90,7 @@ export const cart = {
         round: 'A',
         H3: { text: 'Enter Coupon Code', fontSize: 'A', fontWeight: '700' },
         Input: {
+          tag: 'input',
           placeholder: 'Enter Your Coupon Code',
           background: 'gray1',
           color: 'text',
@@ -95,11 +98,10 @@ export const cart = {
           round: 'Z',
           border: '1px solid gray2',
           fontSize: 'Z',
-          on: {
-            input: (ev, el, s) => s.update({ inputValue: ev.target.value })
-          }
+          onInput: (ev, el, s) => s.update({ inputValue: ev.target.value })
         },
         Button: {
+          extends: 'Button',
           text: 'Apply Your Coupon',
           background: 'white',
           color: 'primary',
@@ -109,12 +111,10 @@ export const cart = {
           fontSize: 'Z',
           fontWeight: '600',
           cursor: 'pointer',
-          on: {
-            click: (ev, el, s) => {
-              const code = s.inputValue
-              if (code && s.root.coupons && s.root.coupons[code] !== undefined) {
-                s.root.update({ discount: s.root.coupons[code] })
-              }
+          onClick: (ev, el, s) => {
+            const code = s.inputValue
+            if (code && s.root.coupons && s.root.coupons[code] !== undefined) {
+              s.root.update({ discount: s.root.coupons[code] })
             }
           }
         }
@@ -125,23 +125,21 @@ export const cart = {
       PaymentMethod: {},
 
       CheckoutButton: {
-        Button: {
-          text: 'Check Out',
-          tag: 'a',
-          href: '/shipping',
-          background: 'primary',
-          color: 'white',
-          padding: 'A',
-          round: 'Z',
-          border: 'none',
-          fontSize: 'Z2',
-          fontWeight: '700',
-          cursor: 'pointer',
-          marginTop: 'Z',
-          textDecoration: 'none',
-          display: 'block',
-          textAlign: 'center'
-        }
+        extends: 'Link',
+        text: 'Check Out',
+        href: '/shipping',
+        background: 'primary',
+        color: 'white',
+        padding: 'A',
+        round: 'Z',
+        border: 'none',
+        fontSize: 'Z2',
+        fontWeight: '700',
+        cursor: 'pointer',
+        marginTop: 'Z',
+        textDecoration: 'none',
+        display: 'block',
+        textAlign: 'center'
       }
     }
   }

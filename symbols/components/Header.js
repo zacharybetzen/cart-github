@@ -4,7 +4,7 @@ export const Header = {
   align: 'center space-between',
   padding: 'B C',
   background: 'white',
-  boxShadow: 'black05 0 1px 2px',
+  boxShadow: 'black.1 0 X Y',
 
   Logo: {
     extends: 'Link',
@@ -15,7 +15,7 @@ export const Header = {
     Icon: { name: 'logo' },
     Text: {
       text: 'The Shape Store',
-      fontSize: '32px',
+      fontSize: 'C',
       fontWeight: '700',
       color: 'black'
     }
@@ -64,7 +64,6 @@ export const Header = {
     DashboardBtn: {
       extends: 'Button',
       text: 'My Dashboard',
-      theme: 'primary',
       padding: 'Z B',
       round: 'Z',
       fontSize: 'Z',
