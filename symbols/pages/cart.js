@@ -94,7 +94,10 @@ export const cart = {
           padding: 'Z2 A',
           round: 'Z',
           border: '1px solid gray2',
-          fontSize: 'Z'
+          fontSize: 'Z',
+          on: {
+            input: (ev, el, s) => s.update({ inputValue: ev.target.value })
+          }
         },
         Button: {
           text: 'Apply Your Coupon',
@@ -105,80 +108,27 @@ export const cart = {
           round: 'Z',
           fontSize: 'Z',
           fontWeight: '600',
-          cursor: 'pointer'
-        }
-      },
-
-      OrderSummary: {
-        flow: 'y',
-        gap: 'A',
-        padding: 'B',
-        background: 'white',
-        round: 'A',
-        H3: { text: 'Order Summary', fontSize: 'A', fontWeight: '700' },
-        Row_Subtotal: {
-          flow: 'x',
-          align: 'center space-between',
-          Text_L: { text: 'Subtotal', color: 'secondary', fontSize: 'Z' },
-          Text_V: { text: (el, s) => `$${el.call('calculateSubtotal').toFixed(2)}`, fontWeight: '600', fontSize: 'Z' }
-        },
-        Row_Discount: {
-          flow: 'x',
-          align: 'center space-between',
-          Text_L: { text: 'Discount', color: 'secondary', fontSize: 'Z' },
-          Text_V: { text: (el, s) => `$${(s.root.discount || 0).toFixed(2)}`, fontWeight: '600', fontSize: 'Z' }
-        },
-        Row_Shipping: {
-          flow: 'x',
-          align: 'center space-between',
-          Text_L: { text: 'Shipping', color: 'secondary', fontSize: 'Z' },
-          Text_V: { text: (el, s) => `$${(s.root.shipping || 0).toFixed(2)}`, fontWeight: '600', fontSize: 'Z' }
-        },
-        Row_Tax: {
-          flow: 'x',
-          align: 'center space-between',
-          Text_L: { text: 'Tax', color: 'secondary', fontSize: 'Z' },
-          Text_V: { text: (el, s) => `$${(el.call('calculateSubtotal') * (s.root.taxRate || 0)).toFixed(2)}`, fontWeight: '600', fontSize: 'Z' }
-        },
-        Total: {
-          flow: 'x',
-          align: 'center space-between',
-          marginTop: 'Z',
-          Text_L: { text: 'Total', fontWeight: '700', fontSize: 'A' },
-          Text_V: { 
-            text: (el, s) => {
-              const sub = el.call('calculateSubtotal')
-              const tax = sub * (s.root.taxRate || 0)
-              const shipping = s.root.shipping || 0
-              const discount = s.root.discount || 0
-              return `$${(sub + tax + shipping - discount).toFixed(2)}`
-            },
-            fontWeight: '800', 
-            fontSize: 'A2' 
+          cursor: 'pointer',
+          on: {
+            click: (ev, el, s) => {
+              const code = s.inputValue
+              if (code && s.root.coupons && s.root.coupons[code] !== undefined) {
+                s.root.update({ discount: s.root.coupons[code] })
+              }
+            }
           }
         }
       },
 
-      PaymentMethod: {
-        flow: 'y',
-        gap: 'A',
-        padding: 'B',
-        background: 'white',
-        round: 'A',
-        H3: { text: 'Payment Method', fontSize: 'A', fontWeight: '700' },
-        Icons: {
-          flow: 'x',
-          gap: 'Z',
-          align: 'center space-between',
-          padding: 'Z 0',
-          borderTop: '1px solid gray2',
-          Paypal: { text: 'PayPal', background: 'gray1', padding: 'Z', round: 'Z', flex: 1, textAlign: 'center' },
-          Stripe: { text: 'Visa', background: 'gray1', padding: 'Z', round: 'Z', flex: 1, textAlign: 'center' },
-          Mastercard: { text: 'Mastercard', background: 'gray1', padding: 'Z', round: 'Z', flex: 1, textAlign: 'center' },
-          Bitcoin: { text: 'EBT', background: 'gray1', padding: 'Z', round: 'Z', flex: 1, textAlign: 'center' }
-        },
+      OrderSummary: {},
+
+      PaymentMethod: {},
+
+      CheckoutButton: {
         Button: {
           text: 'Check Out',
+          tag: 'a',
+          href: '/shipping',
           background: 'primary',
           color: 'white',
           padding: 'A',
@@ -187,7 +137,10 @@ export const cart = {
           fontSize: 'Z2',
           fontWeight: '700',
           cursor: 'pointer',
-          marginTop: 'Z'
+          marginTop: 'Z',
+          textDecoration: 'none',
+          display: 'block',
+          textAlign: 'center'
         }
       }
     }
